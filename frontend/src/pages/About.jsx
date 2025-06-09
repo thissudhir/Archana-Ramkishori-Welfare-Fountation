@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Container,
@@ -31,14 +32,7 @@ import {
   Language,
   ArrowRightAlt,
 } from "@mui/icons-material";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  AnimatePresence,
-  useAnimation,
-} from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 export default function AboutUs() {
@@ -53,12 +47,13 @@ export default function AboutUs() {
     }
   }, [controls, inView]);
 
+  // Enhanced animation variants
   const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
 
@@ -67,8 +62,8 @@ export default function AboutUs() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.3,
+        delayChildren: 0.4,
       },
     },
   };
@@ -123,17 +118,17 @@ export default function AboutUs() {
         background: `linear-gradient(135deg, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 100%)`,
         position: "relative",
         overflow: "hidden",
-        pt: 2,
-        pb: 10,
+        pt: 4,
+        pb: 12,
       }}
     >
-      {/* Animated floating particles */}
-      {[...Array(15)].map((_, i) => (
+      {/* Enhanced floating particles with more variety */}
+      {[...Array(20)].map((_, i) => (
         <Box
           key={i}
           component={motion.div}
           animate={{
-            y: ["110vh", `-${10 + Math.random() * 20}vh`],
+            y: ["110vh", `-${10 + Math.random() * 30}vh`],
             x: [
               Math.random() * window.innerWidth,
               Math.random() * window.innerWidth,
@@ -142,18 +137,21 @@ export default function AboutUs() {
             opacity: [0.2, 0.8, 0.2],
           }}
           transition={{
-            duration: 15 + Math.random() * 20,
+            duration: 15 + Math.random() * 25,
             repeat: Infinity,
             delay: Math.random() * 5,
+            ease: "linear",
           }}
           sx={{
             position: "absolute",
-            width: `${2 + Math.random() * 8}px`,
-            height: `${2 + Math.random() * 8}px`,
+            width: `${2 + Math.random() * 10}px`,
+            height: `${2 + Math.random() * 10}px`,
             background:
-              i % 2 === 0
+              i % 3 === 0
                 ? theme.palette.secondary.main
-                : theme.palette.warning.main,
+                : i % 3 === 1
+                ? theme.palette.warning.main
+                : theme.palette.success.light,
             borderRadius: "50%",
             filter: "blur(1px)",
             zIndex: 0,
@@ -167,19 +165,25 @@ export default function AboutUs() {
           animate={controls}
           variants={staggerContainer}
         >
-          {/* Hero Section */}
-          <Box sx={{ textAlign: "center", py: 10 }}>
-            <motion.div variants={fadeIn}>
+          {/* Enhanced Hero Section */}
+          <Box sx={{ textAlign: "center", py: { xs: 8, md: 12 } }}>
+            <motion.div
+              variants={fadeIn}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
               <Typography
                 variant="h1"
                 component="h1"
                 sx={{
                   fontWeight: 800,
                   mb: 3,
+                  fontSize: { xs: "2.5rem", md: "3.5rem" },
                   background: `linear-gradient(45deg, ${theme.palette.common.white}, ${theme.palette.secondary.light})`,
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   textShadow: "0 4px 20px rgba(0,0,0,0.2)",
+                  letterSpacing: "-0.02em",
                 }}
               >
                 About ARKWF
@@ -218,8 +222,14 @@ export default function AboutUs() {
             </motion.div>
           </Box>
 
-          {/* Vision Section */}
-          <motion.div variants={fadeIn} sx={{ mb: 10 }}>
+          {/* Enhanced Vision Section with better gradient */}
+          <motion.div
+            variants={fadeIn}
+            sx={{
+              mb: { xs: 8, md: 12 },
+              transform: "perspective(1000px)",
+            }}
+          >
             <Card
               sx={{
                 p: { xs: 3, md: 6 },
@@ -228,6 +238,10 @@ export default function AboutUs() {
                 backdropFilter: "blur(12px)",
                 border: `1px solid ${theme.palette.secondary.main}30`,
                 boxShadow: `0 8px 32px ${theme.palette.primary.dark}80`,
+                transition: "transform 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "translateY(-5px)",
+                },
               }}
             >
               <Typography
@@ -269,8 +283,8 @@ export default function AboutUs() {
             </Card>
           </motion.div>
 
-          {/* Focus Areas */}
-          <motion.div variants={fadeIn} sx={{ mb: 10 }}>
+          {/* Enhanced Focus Areas with better hover effects */}
+          <motion.div variants={fadeIn} sx={{ mb: { xs: 8, md: 12 } }}>
             <Typography
               variant="h3"
               gutterBottom
@@ -293,7 +307,7 @@ export default function AboutUs() {
                 Focus Areas
               </Box>
             </Typography>
-            <Grid container spacing={3}>
+            <Grid container spacing={4}>
               {focusAreas.map((area, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
                   <Card
@@ -304,6 +318,7 @@ export default function AboutUs() {
                     whileHover={{
                       y: -10,
                       boxShadow: `0 20px 40px ${area.color}40`,
+                      scale: 1.02,
                     }}
                     onMouseEnter={() => setHoveredCard(index)}
                     onMouseLeave={() => setHoveredCard(null)}
@@ -383,7 +398,7 @@ export default function AboutUs() {
           </motion.div>
 
           {/* Micro-Donation Model */}
-          <motion.div variants={fadeIn} sx={{ mb: 10 }}>
+          <motion.div variants={fadeIn} sx={{ mb: { xs: 8, md: 12 } }}>
             <Paper
               sx={{
                 p: { xs: 3, md: 6 },
