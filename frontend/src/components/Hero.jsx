@@ -10,6 +10,7 @@ import {
 import { motion, useAnimation, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import theme, { colors } from "../styles/theme"; // Adjust the path as necessary
+import { Link } from "react-router-dom";
 
 const floatingAnimation = {
   y: [-10, 10],
@@ -187,74 +188,81 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <Button
-            variant="contained"
-            size="large"
-            component={motion.button}
+          <motion.div
             whileHover={{
               scale: 1.05,
-              boxShadow: `0 0 30px ${colors.secondary}66`,
+              // backgroundColor: `${colors.secondary}11`,
             }}
             whileTap={{ scale: 0.95 }}
-            sx={{
-              borderRadius: "50px",
-              px: 4,
-              py: 1.5,
-              fontSize: "1.1rem",
-              fontWeight: 700,
-              background: colors.gradient.accent,
-              color: colors.primary,
-              textTransform: "none",
-              letterSpacing: "0.05em",
-              position: "relative",
-              overflow: "hidden",
-              "&::before": {
-                content: '""',
-                position: "absolute",
-                top: 0,
-                left: "-100%",
-                width: "100%",
-                height: "100%",
-                background:
-                  "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
-                transition: "all 0.6s ease",
-              },
-              "&:hover::before": {
-                left: "100%",
-              },
-            }}
           >
-            Donate Now
-          </Button>
-
-          <Button
-            variant="outlined"
-            size="large"
-            component={motion.button}
+            <Button
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/donate"
+              sx={{
+                borderRadius: "50px",
+                px: 4,
+                py: 1.5,
+                fontSize: "1.1rem",
+                fontWeight: 700,
+                background: colors.gradient.accent,
+                color: colors.primary,
+                textTransform: "none",
+                letterSpacing: "0.05em",
+                position: "relative",
+                overflow: "hidden",
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: "-100%",
+                  width: "100%",
+                  height: "100%",
+                  background:
+                    "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
+                  transition: "all 0.6s ease",
+                },
+                "&:hover::before": {
+                  left: "100%",
+                },
+              }}
+            >
+              Donate Now
+            </Button>
+          </motion.div>
+          <motion.div
             whileHover={{
               scale: 1.05,
-              backgroundColor: `${colors.secondary}11`,
+              // backgroundColor: `${colors.secondary}11`,
             }}
             whileTap={{ scale: 0.95 }}
-            sx={{
-              borderRadius: "50px",
-              px: 4,
-              py: 1.5,
-              fontSize: "1.1rem",
-              fontWeight: 700,
-              border: `2px solid ${colors.secondary}`,
-              color: colors.secondary,
-              backdropFilter: "blur(8px)",
-              textTransform: "none",
-              letterSpacing: "0.05em",
-              "&:hover": {
+          >
+            <Button
+              variant="outlined"
+              size="large"
+              component={Link}
+              to="/about-us"
+              sx={{
+                borderRadius: "50px",
+                px: 4,
+                py: 1.5,
+                fontSize: "1.1rem",
+                fontWeight: 700,
                 border: `2px solid ${colors.secondary}`,
-                boxShadow: `0 0 20px ${colors.secondary}33`,
-              },
-            }}
-          >
-            Learn More
-          </Button>
+                color: colors.secondary,
+                backdropFilter: "blur(8px)",
+                textTransform: "none",
+                letterSpacing: "0.05em",
+                "&:hover": {
+                  border: `2px solid ${colors.secondary}`,
+                  boxShadow: `0 0 20px ${colors.secondary}33`,
+                },
+              }}
+            >
+              Learn More
+            </Button>
+          </motion.div>
         </Stack>
       </Box>
 

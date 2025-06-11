@@ -323,32 +323,36 @@ export default function Navbar() {
                 >
                   Contact
                 </Button>
-                <Button
-                  component={Link}
-                  to="/donate"
-                  variant="contained"
-                  color="secondary"
-                  startIcon={<VolunteerActivism />}
-                  sx={{
-                    borderRadius: 6,
-                    fontWeight: 600,
-                    px: 3,
-                    background: `linear-gradient(45deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.dark})`,
-                    boxShadow: `0 4px 15px ${theme.palette.secondary.light}`,
-                  }}
+                <motion.div
                   whileHover={{
                     scale: 1.05,
                     boxShadow: `0 6px 20px ${theme.palette.secondary.main}`,
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Donate Now
-                </Button>
+                  <Button
+                    component={Link}
+                    to="/donate"
+                    variant="contained"
+                    color="secondary"
+                    startIcon={<VolunteerActivism />}
+                    sx={{
+                      borderRadius: 6,
+                      fontWeight: 600,
+                      px: 3,
+                      background: `linear-gradient(45deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.dark})`,
+                      boxShadow: `0 4px 15px ${theme.palette.secondary.light}`,
+                    }}
+                  >
+                    Donate Now
+                  </Button>
+                </motion.div>
               </Stack>
             </motion.div>
           )}
         </Toolbar>
       </AppBar>
+
       <ScrollTop>
         <Fab
           color="secondary"
