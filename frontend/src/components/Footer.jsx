@@ -32,8 +32,8 @@ export default function Footer() {
 
   const quickLinks = [
     { text: "About Us", href: "/about-us" },
-    { text: "Our Projects", href: "/projects" },
-    { text: "Get Involved", href: "/volunteer" },
+    { text: "Term & conditions", href: "/term-and-conditions" },
+    { text: "Privacy Policy", href: "/privacy-policy" },
     { text: "Contact", href: "/contact-us" },
   ];
 
