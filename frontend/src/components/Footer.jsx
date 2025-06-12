@@ -34,7 +34,7 @@ export default function Footer() {
     { text: "About Us", href: "/about-us" },
     { text: "Our Projects", href: "/projects" },
     { text: "Get Involved", href: "/volunteer" },
-    { text: "Contact", href: "/contact" },
+    { text: "Contact", href: "/contact-us" },
   ];
 
   return (

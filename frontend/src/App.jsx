@@ -15,6 +15,8 @@ import AboutUs from "./pages/About";
 import ContactUs from "./pages/Contact";
 import Donation from "./pages/Donation";
 import NotFound from "./pages/NotFound"; // Add NotFound page
+import TermAndConditions from "./pages/TermAndConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
   return (
@@ -29,6 +31,11 @@ function App() {
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="/donate" element={<Donation />} />
+                <Route
+                  path="/term-and-conditions"
+                  element={<TermAndConditions />}
+                />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="*" element={<NotFound />} /> {/* Add 404 page */}
               </Routes>
             </Box>
