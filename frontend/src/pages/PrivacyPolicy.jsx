@@ -98,7 +98,27 @@ const PrivacyPolicy = () => {
       ],
       type: "list",
     },
-    // ... (rest of your content remains the same)
+    {
+      title: "How We Use Your Data",
+      content: `We may use personal data for the following purposes: - Providing and maintaining our Service, Managing your account and processing transactions, Contacting you regarding updates and relevant information, Responding to your inquiries and Ensuring compliance with legal obligations`,
+      type: "text",
+      highlight: true,
+    },
+    {
+      title: "Sharing Your Personal Data",
+      content: `We may share your information: - With Service Providers to monitor and improve our Service, For Business Transfers if involved in a merger or acquisition, With Affiliates for operational consistency, With Business Partners for collaborative programs, With Other Users when engaging in public forums and With Your Consent for additional purposes.`,
+      type: "text",
+      highlight: true,
+    },
+    {
+      title: "Data Retention and Security",
+      content: [
+        "We retain personal data only for as long as necessary.",
+        "Usage data may be retained for analysis and security improvements.",
+        "While we implement security measures, no online transmission is entirely secure.",
+      ],
+      type: "list",
+    },
   ];
 
   const handleDownloadPDF = () => {

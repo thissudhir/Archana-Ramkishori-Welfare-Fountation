@@ -37,7 +37,6 @@ Owner” or “we” or “us” or “our”) and you (“you” or “your”)
 assigning any reason. It is your responsibility to periodically review these Terms to stay informed of
 updates.`,
       highlight: true,
-      highlight: true,
     },
     {
       title: "Eligibility",
